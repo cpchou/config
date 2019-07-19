@@ -1,0 +1,15 @@
+server:
+  port: 8761
+  # servlet:
+  #   context-path: /eureka
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka/
+      # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  application:
+    name: spring-admin
