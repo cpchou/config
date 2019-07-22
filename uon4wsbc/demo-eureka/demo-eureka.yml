@@ -3,9 +3,14 @@ server:
   port: ${PORT:8761}
   # servlet:
   #   context-path: /eureka
+
+spring:
+  application:
+    name: spring-eureka
+
 eureka:
   instance:
-    hostname: peer1
+    hostname: spring-eureka
     prefer-ip-address: false #以IP地址注册到服务中心，相互注册使用IP地址
     lease-renewal-interval-in-seconds: 10
     #ip-address: 192.168.1.1 #强制指定IP地址，默认会获取本机的IP地址
@@ -15,15 +20,9 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       # defaultZone: http://peer1:7000/eureka/
-      defaultZone: ${DISCOVERY_URL:http://localhost:8761}/eureka/
+      defaultZone: ${DISCOVERY_URL:http://spring-eureka:8761}/eureka/
       # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     enable-self-preservation: false
 
 
-spring:
-  boot:
-    admin:
-      context-path: /admin
-  application:
-    name: eureka-server
